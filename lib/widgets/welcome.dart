@@ -21,7 +21,7 @@ class _WelcomeState extends State<Welcome> {
         child: Center(
             child: Container(
           height: 100,
-          color: Color.fromARGB(0, 0, 0, 0),
+          color: Color.fromARGB(74, 0, 0, 0),
           child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
