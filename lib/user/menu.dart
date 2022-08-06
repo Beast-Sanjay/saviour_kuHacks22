@@ -17,6 +17,7 @@ class menuState extends State<menu> {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
+        backgroundColor: Colors.black,
         title: Text('User Options'),
       ),
       body: Column(children: [
