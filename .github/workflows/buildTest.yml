@@ -1,0 +1,42 @@
+name: Flutter CI
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-java@v3
+        with:
+          distribution: "microsoft"
+          java-version: "16.0.2"
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v2
+
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: "3.0.5"
+          channel: "stable"
+
+      # - name: Setup Ninja
+      #   uses: ashutoshvarma/setup-ninja@master
+      #   with:
+      #     # ninja version to download. Default: 1.10.0
+      #     version: 1.10.0
+      # - run: sudo apt install libgtk-3-dev
+
+      # - run: mv assets/fonts/SourceCodePro-Black.ttf assets/fonts/SourceCodePro-black.ttf
+      - run: flutter pub get
+      - run: flutter doctor
+      # - run: flutter format --set-exit-if-changed .
+      # - run: flutter analyze .
+      - run: flutter build apk --verbose --debug
+      - uses: actions/upload-artifact@v3
+        with:
+          name: debug-apk
+          path: build/app/outputs/flutter-apk/app-debug.apk
+          retention-days: 1
