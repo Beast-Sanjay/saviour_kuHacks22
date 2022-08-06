@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:saviour/user/menu.dart';
+import 'package:saviour/user/ngolists.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({Key? key}) : super(key: key);
@@ -13,7 +14,11 @@ class _HomeViewState extends State<HomeView> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar(title: Text('Saviour')),
+        appBar: AppBar(
+          title: Text('Saviour'),
+          // foregroundColor: Colors.black,
+          backgroundColor: Colors.black,
+        ),
         body: Cardes(),
       ),
     );
@@ -59,7 +64,9 @@ class Cardes extends StatelessWidget {
             splashColor: Colors.blue.withAlpha(30),
             onTap: () {
               Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => menu()));
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => ListTileSelectExample()));
             },
             child: SizedBox(
               // width: double.infinity,
