@@ -20,8 +20,8 @@ class _WelcomeState extends State<Welcome> {
                 image: AssetImage("images/natureBG.png"), fit: BoxFit.cover)),
         child: Center(
             child: Container(
-              height: 100,
-          color: Color.fromARGB(57, 0, 0, 0),
+          height: 100,
+          color: Color.fromARGB(0, 0, 0, 0),
           child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -56,7 +56,7 @@ class _WelcomeState extends State<Welcome> {
         // override the accent color of theme for this widget only
         data: Theme.of(context).copyWith(
           colorScheme: Theme.of(context).colorScheme.copyWith(
-              secondary: Color.fromARGB(255, 255, 255, 0),
+              secondary: Color.fromARGB(255, 255, 255, 134),
               onSecondary: Color.fromARGB(255, 0, 0, 0)),
         ),
         child: FloatingActionButton(
@@ -64,7 +64,7 @@ class _WelcomeState extends State<Welcome> {
               Navigator.push(
                   context, MaterialPageRoute(builder: (context) => HomeView()));
             },
-            child: Icon(Icons.arrow_circle_right)),
+            child: Icon(Icons.arrow_forward_ios)),
       ),
     );
   }
