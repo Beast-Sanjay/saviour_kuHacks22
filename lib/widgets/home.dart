@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:saviour/user/menu.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({Key? key}) : super(key: key);
@@ -28,9 +29,10 @@ class Cardes extends StatelessWidget {
         Card(
           color: Colors.teal[300],
           child: InkWell(
-            splashColor: Colors.blue.withAlpha(30),
+            splashColor: Color.fromARGB(255, 33, 243, 152).withAlpha(30),
             onTap: () {
-              debugPrint('Card tapped.');
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => menu()));
             },
             child: SizedBox(
               // width: double.infinity,
@@ -38,7 +40,16 @@ class Cardes extends StatelessWidget {
               height: 150,
               child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: [Icon(Icons.account_circle_rounded), Text('User')]),
+                  children: [
+                    Icon(
+                      Icons.account_circle_rounded,
+                      size: 70,
+                    ),
+                    Text(
+                      'User',
+                      style: TextStyle(fontSize: 20),
+                    )
+                  ]),
             ),
           ),
         ),
@@ -47,7 +58,8 @@ class Cardes extends StatelessWidget {
           child: InkWell(
             splashColor: Colors.blue.withAlpha(30),
             onTap: () {
-              debugPrint('Card tapped.');
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => menu()));
             },
             child: SizedBox(
               // width: double.infinity,
@@ -55,7 +67,16 @@ class Cardes extends StatelessWidget {
               height: 150,
               child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: [Icon(Icons.account_balance_rounded), Text('NGO')]),
+                  children: [
+                    Icon(
+                      Icons.account_balance_rounded,
+                      size: 70,
+                    ),
+                    Text(
+                      'NGO',
+                      style: TextStyle(fontSize: 20),
+                    )
+                  ]),
             ),
           ),
         ),
