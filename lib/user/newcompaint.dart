@@ -1,9 +1,8 @@
-// ignore_for_file: camel_case_types, non_constant_identifier_names
-
-import 'package:flutter/material.dart';
-import 'package:firebase_storage/firebase_storage.dart';
-import 'package:image_picker_modern/image_picker_modern.dart';
+// ignore_for_file: camel_case_types, non_constant_identifier_names, depend_on_referenced_packages
 import 'dart:io';
+import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flutter/material.dart';
+import 'package:file_picker/file_picker.dart';
 import 'package:path/path.dart' as Path;
 
 class newCompliant extends StatefulWidget {
@@ -17,38 +16,32 @@ class _newComplaintState extends State<newCompliant> {
   final _IndustryName = TextEditingController();
   final _Location = TextEditingController();
   final _Description = TextEditingController();
-  File? _image;
-  String? _uploadedFileURL;
-  bool isLoading = false;
-  Future chooseFile() async {
-    await ImagePicker.pickImage(source: ImageSource.gallery).then((image) {
-      setState(() {
-        _image = image;
-      });
-    });
+  UploadTask? task;
+  File? file;
+
+  Future SelectFile() async {
+    final result = await FilePicker.platform
+        .pickFiles(allowMultiple: false, allowedExtensions: ['jgp']);
+    if (result == null) return;
+    final path = result.files.single.path!;
+
+    setState(() => file = File(path));
   }
 
-  Future uploadFile() async {
-    setState(() {
-      isLoading = true;
-    });
-    Reference storageReference = FirebaseStorage.instance
-        .ref()
-        .child('images/${Path.basename(_image!.path)}}');
-    UploadTask uploadTask = storageReference.putFile(_image!);
-    await uploadTask.whenComplete(() => print('File Uploaded'));
+  Future UploadFile() async {
+    if (file == null) return;
 
-    storageReference.getDownloadURL().then((fileURL) {
-      setState(() {
-        _uploadedFileURL = fileURL;
-        isLoading = false;
-      });
-    });
+    final filename = Path.basename(file!.path);
+    final destination = 'files/$filename';
+
+    FirebaseApi.uploadFile(destination, file!);
   }
 
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    final filename =
+        file != null ? Path.basename(file!.path) : 'no file seleted';
     return Container(
       child: Scaffold(
         appBar: AppBar(
@@ -97,54 +90,29 @@ class _newComplaintState extends State<newCompliant> {
                         ),
                       ),
                     ),
-                    Column(
-                      children: <Widget>[
-                        Text('Selected Image'),
-                        _image != null
-                            ? Image.file(
-                                _image!,
-                                // height: 150,
-                                height: 150,
-                                width: 150,
-                              )
-                            : Container(
-                                child: Center(
-                                  child: Text(
-                                    "No Image is Selected",
-                                  ),
-                                ),
-                                height: 150,
-                              ),
-                      ],
+                    SizedBox(
+                      height: 48,
                     ),
-                    Column(
-                      children: <Widget>[
-                        Text('Uploaded Image'),
-                        _uploadedFileURL != null
-                            ? Image.network(
-                                _uploadedFileURL!,
-                                height: 150,
-                                width: 150,
-                              )
-                            : Container(
-                                child: Center(
-                                  child: Text(
-                                    "No Image is Selected",
-                                  ),
-                                ),
-                                height: 150,
-                              ),
-                      ],
+                    ElevatedButton.icon(
+                      onPressed: SelectFile,
+                      icon: Icon(Icons.attach_file),
+                      label: Text('Select File'),
                     ),
-                    _image != null
-                        ? isLoading
-                            ? CircularProgressIndicator()
-                            : RaisedButton(
-                                child: Text('Upload Image'),
-                                onPressed: uploadFile,
-                                color: Colors.red,
-                              )
-                        : Container()
+                    SizedBox(
+                      height: 8,
+                    ),
+                    Text(
+                      filename,
+                      style: TextStyle(fontSize: 16),
+                    ),
+                    SizedBox(
+                      height: 48,
+                    ),
+                    ElevatedButton.icon(
+                      onPressed: SelectFile,
+                      icon: Icon(Icons.cloud_upload_rounded),
+                      label: Text('Report'),
+                    ),
                   ],
                 ),
               ),
@@ -153,5 +121,17 @@ class _newComplaintState extends State<newCompliant> {
         ),
       ),
     );
+  }
+}
+
+class FirebaseApi {
+  static UploadTask? uploadFile(String destination, File file) {
+    try {
+      final ref = FirebaseStorage.instance.ref(destination);
+
+      return ref.putFile(file);
+    } on FirebaseException catch (e) {
+      return null;
+    }
   }
 }
