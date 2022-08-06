@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:saviour/user/newcompaint.dart';
 import 'package:saviour/user/ngolists.dart';
 import 'package:saviour/widgets/home.dart';
 
@@ -69,7 +70,12 @@ class menuState extends State<menu> {
                       'Add',
                       style: TextStyle(fontSize: 20),
                     ),
-                    onPressed: () {/* ... */},
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => newCompliant()));
+                    },
                   ),
                   const SizedBox(width: 8),
                 ],
