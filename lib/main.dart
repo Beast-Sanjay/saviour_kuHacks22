@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 
 import './widgets/welcome.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
-void main() {
+void main() async {
   runApp(const Saviour());
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
 }
 
 class Saviour extends StatefulWidget {

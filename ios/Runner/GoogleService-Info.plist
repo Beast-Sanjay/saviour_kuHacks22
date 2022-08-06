@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>24202071755-c6v80ahg1n1k77b5eebuvmovcni2pd03.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.24202071755-c6v80ahg1n1k77b5eebuvmovcni2pd03</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCLK6hrIR7Jsos5o889oYySJ8SNj48M2OA</string>
+	<key>GCM_SENDER_ID</key>
+	<string>24202071755</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.saviour</string>
+	<key>PROJECT_ID</key>
+	<string>saviour-76151</string>
+	<key>STORAGE_BUCKET</key>
+	<string>saviour-76151.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:24202071755:ios:c8cfacdb057d9bb680154e</string>
+</dict>
+</plist>

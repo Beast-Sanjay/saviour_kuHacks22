@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "24202071755",
+    "project_id": "saviour-76151",
+    "storage_bucket": "saviour-76151.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:24202071755:android:3c03469bfc7e228680154e",
+        "android_client_info": {
+          "package_name": "com.example.saviour"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "24202071755-c1j7ge5gq2nurgpqsav6u4fvoo4sctl6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBL-9d6UL3mBB_mLC4SY7YazL94IFLqDWw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "24202071755-c1j7ge5gq2nurgpqsav6u4fvoo4sctl6.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "24202071755-c6v80ahg1n1k77b5eebuvmovcni2pd03.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.saviour"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
