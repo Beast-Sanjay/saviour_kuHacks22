@@ -20,8 +20,7 @@ class _newComplaintState extends State<newCompliant> {
   File? file;
 
   Future SelectFile() async {
-    final result = await FilePicker.platform
-        .pickFiles(allowMultiple: false, allowedExtensions: ['jgp']);
+    final result = await FilePicker.platform.pickFiles(allowMultiple: false);
     if (result == null) return;
     final path = result.files.single.path!;
 
@@ -109,7 +108,7 @@ class _newComplaintState extends State<newCompliant> {
                       height: 48,
                     ),
                     ElevatedButton.icon(
-                      onPressed: SelectFile,
+                      onPressed: UploadFile,
                       icon: Icon(Icons.cloud_upload_rounded),
                       label: Text('Report'),
                     ),

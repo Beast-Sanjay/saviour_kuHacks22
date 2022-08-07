@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:saviour/user/menu.dart';
-import 'package:saviour/user/ngolists.dart';
+import 'package:saviour/user/ngolist.dart';
+import 'package:saviour/user/ngopade.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({Key? key}) : super(key: key);
@@ -67,7 +68,7 @@ class Cardes extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                       builder: (context) =>
-                          ListTileSelectExample() // need to change the route
+                          ngopage() // need to change the route
                       ));
             },
             child: SizedBox(

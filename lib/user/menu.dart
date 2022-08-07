@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:saviour/user/newcompaint.dart';
-import 'package:saviour/user/ngolists.dart';
+import 'package:saviour/user/ngolist.dart';
+import 'package:saviour/user/ngopade.dart';
 import 'package:saviour/widgets/home.dart';
 
 // ignore: camel_case_types
@@ -104,10 +105,8 @@ class menuState extends State<menu> {
                       style: TextStyle(fontSize: 20),
                     ),
                     onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => ListTileSelectExample()));
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => ngopage()));
                     },
                   ),
                   const SizedBox(width: 8),
